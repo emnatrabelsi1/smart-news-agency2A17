@@ -587,7 +587,7 @@ QToolBox::tab:selected {
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QPushButton" name="gestion_article">
@@ -868,7 +868,7 @@ color: rgb(255, 255, 255);</string>
          <rect>
           <x>0</x>
           <y>10</y>
-          <width>381</width>
+          <width>394</width>
           <height>31</height>
          </rect>
         </property>
@@ -887,6 +887,13 @@ color: rgb(255, 255, 255);</string>
           <widget class="QPushButton" name="pdf">
            <property name="text">
             <string>pdf</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="mailing">
+           <property name="text">
+            <string>mailing</string>
            </property>
           </widget>
          </item>

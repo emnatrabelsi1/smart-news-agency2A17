@@ -30,13 +30,15 @@ SOURCES += \
         categorie.cpp \
         connection.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        smtp.cpp
 
 HEADERS += \
     article.h \
     categorie.h \
         mainwindow.h \
-    connection.h
+    connection.h \
+    smtp.h
 
 FORMS += \
         mainwindow.ui

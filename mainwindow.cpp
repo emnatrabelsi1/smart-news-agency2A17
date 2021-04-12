@@ -13,6 +13,7 @@
 #include"qcoreapplication.h"
 #include"qdebug.h"
 #include <QPropertyAnimation>
+#include "smtp.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -37,6 +38,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pb_ajouter_clicked()
 {
+
         click->play();
         qDebug()<<click ->errorString();
         int id_Article = ui->le_ID->text().toInt();
@@ -55,6 +57,11 @@ void MainWindow::on_pb_ajouter_clicked()
                       QObject::tr("article ajouté.\n"
                                   "Click Cancel to exit."), QMessageBox::Cancel);
     ui->tab_article->setModel(g->afficher());
+    Smtp* smtp;
+        smtp = new Smtp("smartnewsagency1@gmail.com", "SMARTNEWSAGENCY", "smtp.gmail.com");
+        //connect(smtp, SIGNAL(clicked()), this, SLOT(on_Mail_clicked()));
+
+        smtp->sendMail("smartnewsagency1@gmail.com", "smartnewsagency1@gmail.com" , "Mail d'ajout","Bonjour,\n Votre article a été ajouté avec succée. \nCordialement ");
 
     }
       else
@@ -284,7 +291,11 @@ QMessageBox::information(nullptr, QObject::tr("Ajouter une categorie"),
                   QObject::tr("categorie ajoutée.\n"
                               "Click Cancel to exit."), QMessageBox::Cancel);
 ui->tab_categorie->setModel(d->afficher_c());
+Smtp* smtp;
+    smtp = new Smtp("smartnewsagency1@gmail.com", "SMARTNEWSAGENCY", "smtp.gmail.com");
+    //connect(smtp, SIGNAL(clicked()), this, SLOT(on_Mail_clicked()));
 
+    smtp->sendMail("smartnewsagency1@gmail.com", "smartnewsagency1@gmail.com" , "Mail d'ajout","Bonjour,\n Votre Commande a été ajoutée avec succée. \nCordialement ");
 }
   else
 
@@ -499,4 +510,17 @@ void MainWindow::on_trier2_2_clicked()
                            QObject::tr("Erreur !\n"
                                        "Click Cancel to exit."), QMessageBox::Cancel);
            ui->tab_categorie->setModel(f->tri_id_c());}//refresh
+}
+
+void MainWindow::on_mailing_clicked()
+{
+    click->play();
+    qDebug()<<click ->errorString();
+    Smtp* smtp;
+        smtp = new Smtp("smartnewsagency1@gmail.com", "SMARTNEWSAGENCY", "smtp.gmail.com");
+        //connect(smtp, SIGNAL(clicked()), this, SLOT(on_Mail_clicked()));
+
+        smtp->sendMail("smartnewsagency1@gmail.com", "smartnewsagency1@gmail.com" , "test","test ");
+        qDebug()<<"mail a été envoyé";
+        QMessageBox::information(this,"mail envoyé","mail a ete envoyé");
 }

@@ -66,6 +66,8 @@ private slots:
 
     void on_trier2_2_clicked();
 
+    void on_mailing_clicked();
+
 private:
     Ui::MainWindow *ui;
     Article *g ;
